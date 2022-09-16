@@ -58,9 +58,8 @@ password: senha
 ### Realizar tag da imagem:
 Ex: sudo podman tag <imagem_origem> <imagem_destino>
 ```
-sudo podman tag localhost/eap64-sefaz  almeidarommel/jboss64:1.2
+sudo podman tag localhost/eap64-image  almeidarommel/jboss64:1.2
 ```
-
 ### Realizar o push da imagem para Docker hub
 Ex: sudo podman push <repositório>/<nome_da_imagem>:<tag>
 ```
