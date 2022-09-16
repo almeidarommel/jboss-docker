@@ -1,9 +1,9 @@
 # This is a Dockerfile for the jboss-eap-6/eap64-openshift:1.9 image.
-FROM rhel7:7-released
+FROM registry.access.redhat.com/ubi8/ubi
 USER jboss
 
 # Add scripts used to configure the image
-COPY modules /tmp/scripts/
+#COPY modules /tmp/scripts/
 
 # Add all artifacts to the /tmp/artifacts directory
 COPY \
