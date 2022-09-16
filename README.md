@@ -55,7 +55,7 @@ sudo podman login docker.io
 username: user1
 password: senha
 ```
-### Realizar tag da imagem:
+### Realizar tag da imagem para o registry de destino:
 Ex: sudo podman tag <imagem_origem> <imagem_destino>
 ```
 sudo podman tag localhost/eap64-image  almeidarommel/jboss64:1.2
