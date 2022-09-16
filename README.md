@@ -65,6 +65,8 @@ Ex: sudo podman push <repositório>/<nome_da_imagem>:<tag>
 ```
 sudo podman push almeidarommel/jboss64:1.2
 ```
+<Repositório DockerHub><https://hub.docker.com/repository/docker/almeidarommel/jboss64/general>
+
 ### Realizar o import-image para o Openshift
 Ex: oc import-image <image>:<tag> --from=<repositório>/<image>:<tag> --confirm
 ```
