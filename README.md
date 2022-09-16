@@ -1,9 +1,11 @@
 ## Configurando uma imagem JBoss personalizada
 
 ### Criar um Dockerfile
-
+```
 vim Dockerfile 
-
+```
+Content:
+```
 FROM registry.access.redhat.com/ubi8/ubi
 
 ENV JBOSS_HOME=/usr/jboss \
@@ -36,40 +38,50 @@ EXPOSE 80 443 9090 9990
 RUN ./bin/add-user.sh admin Admin.123# --silent
 
 CMD ["./bin/standalone.sh", "-b", "0.0.0.0", "-bmanagement", "0.0.0.0"]
+```
 
 ### Buildar o Dockerfile
-
+```
 sudo podman build -t eap64-image .
+```
 
 ### Criar repositório no Dockerhub
 
 Acessar o console do dockerHub e realizar o procedimento
 
 ### Fazer o login do Openshift ao Dockerhub
-
+```
 sudo podman login docker.io
 username: user1
 password: senha
-
+```
 ### Realizar tag da imagem:
-sudo podman tag <imagem_origem> <imagem_destino>
+Ex: sudo podman tag <imagem_origem> <imagem_destino>
+```
 sudo podman tag localhost/eap64-sefaz  almeidarommel/jboss64:1.2
+```
 
 ### Realizar o push da imagem para Docker hub
-sudo podman push <repositório>/<nome_da_imagem>:<tag>
+Ex: sudo podman push <repositório>/<nome_da_imagem>:<tag>
+```
 sudo podman push almeidarommel/jboss64:1.2
+```
 ### Realizar o import-image para o Openshift
-oc import-image <image>:<tag> --from=<repositório>/<image>:<tag> --confirm
+Ex: oc import-image <image>:<tag> --from=<repositório>/<image>:<tag> --confirm
+```
 oc import-image jboss64:1.2 --from=almeidarommel/jboss64:1.2 --confirm
-
+```
 ### Adicionar as permissões necessárias para subir o DeploymentConfig e resolver erros de permission Denied: (Lembrando que você deve ser cluster-admin)
-oc adm policy add-scc-to-user anyuid -z default -n <namespace>
+Ex: oc adm policy add-scc-to-user anyuid -z default -n <namespace>
+```
 oc adm policy add-scc-to-user anyuid -z default -n jboss-hello-world
+```
 
 ### Realizar o DeploymentConfig no Openshift
 
 Criar o DeploymentConfig e add o seguinte conteúdo:
 
+```
 kind: DeploymentConfig
 apiVersion: apps.openshift.io/v1
 metadata:
@@ -154,10 +166,19 @@ spec:
       dnsPolicy: ClusterFirst
       securityContext: {}
       schedulerName: default-scheduler
+```
 
 ## Configurar um service
+```
+asdasda
+```
 
 ## Configurar uma route
-
+```
+EX: oc expose svc/name_service 
+```
 ## Realizar o teste da aplicação
+https://<domain_ocp>/route/<context>
+https://<domain_ocp>/route/jboss-helloworld-ws/HelloWorldService?wsdl
+
 
