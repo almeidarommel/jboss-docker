@@ -1,0 +1,10 @@
+embed-server --std-out=echo --server-config=standalone-openshift.xml
+
+echo Adicionando driver Oracle
+/subsystem=datasources/jdbc-driver=oracle:add(driver-name=oracle,driver-module-name=com.oracle.ojdbc6)
+
+echo Adicionando data-source da aplicação
+data-source add --name="${env.DB_DATASOURCE_NAME}" --jndi-name="${env.DB_JNDI}" --driver-name=oracle --connection-url="${env.DB_URL}" --user-name="${env.DB_USER}" --password="${env.DB_PASSWORD}" --min-pool-size=1 --max-pool-size=100 --validate-on-match=true --background-validation=true --valid-connection-checker-class-name=org.jboss.jca.adapters.jdbc.extensions.oracle.OracleValidConnectionChecker --exception-sorter-class-name=org.jboss.jca.adapters.jdbc.extensions.oracle.OracleExceptionSorter
+
+quit
+
