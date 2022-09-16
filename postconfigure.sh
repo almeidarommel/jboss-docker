@@ -12,4 +12,3 @@ do
   echo "Arquivo sendo executado: ${cli_file}"
   $JBOSS_HOME/bin/jboss-cli.sh --file="${cli_file}"
 done
-

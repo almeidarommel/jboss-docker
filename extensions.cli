@@ -6,12 +6,9 @@ echo Adicionando System Properties
 /system-property=http.proxyHost:add(value="${env.http.proxyHost}")
 /system-property=http.proxyPort:add(value="${env.http.proxyPort}")
 
-/system-property=URL_SMTP:add(value="${env.URL_SMTP}")
-
-
-/subsystem=datasources/data-source=ReceitaDS:write-attribute(name=max-pool-size, value="${env.MAX_POOL_SIZE}")
-/subsystem=datasources/data-source=ReceitaDS:write-attribute(name=min-pool-size, value="${env.MIN_POOL_SIZE}")
-
-/subsystem=undertow/server=default-server/http-listener=default:write-attribute(name=allow-unescaped-characters-in-url,value=true)
+#/system-property=URL_SMTP:add(value="${env.URL_SMTP}")
+#/subsystem=datasources/data-source=ReceitaDS:write-attribute(name=max-pool-size, value="${env.MAX_POOL_SIZE}")
+#/subsystem=datasources/data-source=ReceitaDS:write-attribute(name=min-pool-size, value="${env.MIN_POOL_SIZE}")
+#/subsystem=undertow/server=default-server/http-listener=default:write-attribute(name=allow-unescaped-characters-in-url,value=true)
 
 quit
